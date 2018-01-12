@@ -1,0 +1,40 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-4.2.xsd">
+
+    <!-- Enable the @Secured annotation to secure service layer methods -->
+    <global-method-security secured-annotations="enabled" />
+    <!-- enable use-expressions -->
+    <http pattern="/webresources/**" security="none" />
+    <http pattern="/*" auto-config="true" use-expressions="true">
+        <!-- access denied page -->
+        <intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/hello**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/index.html" access="hasRole('ROLE_ADMIN')" />
+
+        <access-denied-handler error-page="/403" />
+        <form-login 
+            login-page="/login" 
+            login-processing-url="/j_spring_security_check"
+            default-target-url="/"
+            authentication-failure-url="/login?error" 
+            username-parameter="username"
+            password-parameter="password" />        
+        
+        <logout logout-url="/j_spring_security_logout" 
+                invalidate-session="true" logout-success-url="/login?logout" />
+        <!-- enable csrf protection -->
+        <csrf />
+    </http>
+        
+    <authentication-manager>
+        <authentication-provider user-service-ref="myUserDetailsService" >
+            <password-encoder hash="bcrypt" />    
+        </authentication-provider>
+    </authentication-manager>
+
+</beans:beans>
