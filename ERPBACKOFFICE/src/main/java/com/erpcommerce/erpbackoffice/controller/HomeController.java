@@ -63,6 +63,20 @@ public class HomeController {
         }
         model.setViewName("login");
 
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (!(auth instanceof AnonymousAuthenticationToken)) {
+            model = new ModelAndView("redirect:/");
+        } else {
+            if (error != null) {
+                model.addObject("error", getErrorMessage(request, "SPRING_SECURITY_LAST_EXCEPTION"));
+            }
+
+            if (logout != null) {
+                model.addObject("msg", "You've been logged out successfully.");
+            }
+            System.out.println("Come to Login");
+        }
+
         return model;
 
     }

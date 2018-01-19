@@ -192,7 +192,7 @@ public class User implements java.io.Serializable {
         this.updatedAt = updatedAt;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles", catalog = "erpcommerce", joinColumns = {
         @JoinColumn(name = "USER_ID", nullable = false, updatable = false)}, inverseJoinColumns = {
         @JoinColumn(name = "ROLE_ID", nullable = false, updatable = false)})

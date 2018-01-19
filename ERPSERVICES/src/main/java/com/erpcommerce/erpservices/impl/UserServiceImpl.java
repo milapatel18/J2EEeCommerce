@@ -9,6 +9,7 @@ import com.erpcommerce.erpmodel.core.User;
 import com.erpcommerce.erpmodel.core.dao.GenericDao;
 import com.erpcommerce.erpmodel.core.dao.UserDao;
 import com.erpcommerce.erpservices.UserService;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,10 @@ public class UserServiceImpl extends GenericServiceImpl<User, Long> implements U
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     public User findByUserName(String username) {
+        User user = userDao.findByUserName(username);
+        if (user.getId() != null) {
+            Hibernate.initialize(user.getRoles());
+        }
         return userDao.findByUserName(username);
     }
 
