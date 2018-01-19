@@ -14,7 +14,7 @@
         <!-- access denied page -->
         <intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/hello**" access="hasRole('ROLE_ADMIN')" />
-        <intercept-url pattern="/index.html" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/" access="hasRole('ROLE_ADMIN')" />
 
         <access-denied-handler error-page="/403" />
         <form-login 
