@@ -2,12 +2,12 @@
 <%@page session="true"%>
 <html>
     <head>
-        <<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Embrobizz</title>
-        <link rel="stylesheet" type="text/css" href="webresources/themes/default/easyui.css">
-        <link rel="stylesheet" type="text/css" href="webresources/themes/icon.css">
-        <link rel="stylesheet" type="text/css" href="webresources/themes/color.css">
-        <link rel="stylesheet" type="text/css" href="webresources/themes/demo/demo.css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>ERPCommerce</title>
+        <link rel="stylesheet" type="text/css" href="webresources/themes/default/easyui.css"/>
+        <link rel="stylesheet" type="text/css" href="webresources/themes/icon.css"/>
+        <link rel="stylesheet" type="text/css" href="webresources/themes/color.css"/>
+        <link rel="stylesheet" type="text/css" href="webresources/themes/demo/demo.css"/>
         <script type="text/javascript" src="webresources/scripts/jquery/jquery-1.11.3.js"></script>
         <script type="text/javascript" src="webresources/scripts/jeasyui/jquery.easyui.min.js"></script>
         <script type="text/javascript" src="webresources/scripts/jeasyui/jquery.edatagrid.js"></script>
@@ -17,7 +17,7 @@
     </head>
     <body onload='document.loginForm.username.focus();'>
 
-        <h1>Spring Security Login Form (Database + Hibernate Authentication)</h1>
+        <h1>ERP Commerce : DHRUVIL ENTERPRISE</h1>
 
         <div id="login-box">
 
@@ -30,29 +30,23 @@
                 <div class="msg">${msg}</div>
             </c:if>
 
-            <form name='loginForm'
-                  action="<c:url value='/j_spring_security_check' />" method='POST'>
 
-                <table>
-                    <tr>
-                        <td>User:</td>
-                        <td><input type='text' name='username'></td>
-                    </tr>
-                    <tr>
-                        <td>Password:</td>
-                        <td><input type='password' name='password' /></td>
-                    </tr>
-                    <tr>
-                        <td colspan='2'><input name="submit" type="submit"
-                                               value="submit" /></td>
-                    </tr>
-                </table>
-
-                <input type="hidden" name="${_csrf.parameterName}"
-                       value="${_csrf.token}" />
-
-            </form>
         </div>
 
+        <div id="winlogin" class="easyui-window"
+             title="Login" fit="false" minimizable="false" maximizable="false" closable="false" resizable="true"
+             style="height:180px;width: 350px;">
+            <%@include file="../view/ui/companyuserlogin.jsp" %>
+        </div>
+
+        <style>
+            .left{
+                padding-left: 0px;
+            }
+            .textbox{
+                height: 20px;
+                padding-left: 5px;
+            }
+        </style>
     </body>
 </html>
