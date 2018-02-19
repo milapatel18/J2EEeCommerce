@@ -39,7 +39,7 @@ public class ModulesDAOImpl extends GenericDaoImpl<Modules, Long> implements Mod
             tx = session.beginTransaction();
             if (modules.getId() != null) {
                 modules1 = (Modules) session.find(Modules.class, modules.getId());
-                Hibernate.initialize(modules.getModules());
+                Hibernate.initialize(modules1.getModules());
             }
             tx.commit();
         } catch (HibernateException e) {
@@ -74,4 +74,47 @@ public class ModulesDAOImpl extends GenericDaoImpl<Modules, Long> implements Mod
             session.close();
         }
     }
+
+    @Override
+    public void updateHasChildren(Long oldParentId, Long newParentId) {
+        Session session = currentSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+
+            if (oldParentId != newParentId) {
+                //update to old parent if it has no children
+
+                //update to new parent
+                Modules newp = (Modules) session.find(Modules.class, newParentId);
+                newp.setHasChildren(1);
+                session.merge(newp);
+                System.out.println("newpModules set to 1" + newp.getModuleName());
+
+                //updatee modules
+                Modules oldp = (Modules) session.find(Modules.class, oldParentId);
+                try {
+                    Hibernate.initialize(oldp.getModuleses());
+                } catch (HibernateException e) {
+
+                    System.out.println("oldp.getModuleses() Not found");
+                }
+                System.out.println("oldp.getModuleses() Size " + oldp.getModuleses().size());
+                if (oldp.getModuleses().isEmpty() || oldp.getModuleses().size() == 0) {
+                    System.out.println("No Childred Set to zero" + oldp.getModuleName());
+                    oldp.setHasChildren(0);
+                    session.merge(oldp);
+                }
+            }
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+
 }

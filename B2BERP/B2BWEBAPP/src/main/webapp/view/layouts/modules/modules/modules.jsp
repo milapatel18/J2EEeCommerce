@@ -4,10 +4,21 @@
         <%@include file="search.jsp" %>
         <%@include file="list.jsp" %>
     </div>
-    <div data-options="region:'center',title:'EDIT MODULES'" style="padding:5px;height:2px;">
+    <div id="modulesContentLayoutEditCenter" data-options="region:'center',title:'EDIT MODULES'" style="padding:5px;height:2px;">
+
     </div>
 </div>
 
 <script>
-    $("#modulesContentLayout").layout({fit: true});
+    $("#modulesContentLayout").layout({
+        fit: true,
+        collapsedContent: function (title) {
+            var region = $(this).panel('options').region;
+            if (region === 'north' || region === 'center') {
+                return title;
+            } else {
+                return "<div class='mytitle'>" + title + "</div>";
+            }
+        }
+    });
 </script>

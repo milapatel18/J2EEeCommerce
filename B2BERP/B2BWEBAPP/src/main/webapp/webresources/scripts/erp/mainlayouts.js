@@ -14,7 +14,7 @@ ERP.prototype = {
         $('#' + moduleID + "ModuleContent").panel({
             href: 'home/module/' + moduleID,
             onLoad: function () {
-                alert('loaded successfully');
+                //alert('loaded successfully');
             }
         });
     }

@@ -23,14 +23,14 @@
         <script type="text/javascript" src="webresources/scripts/jeasyui/datagrid-detailview.js"></script>
         <script type="text/javascript" src="webresources/scripts/erp/mainlayouts.js"></script>
         <script type="text/javascript" src="webresources/scripts/erp/settingModule.js"></script>
-        
+
     </head>
     <body>
         <%
             if (!session.isNew() && session.getAttribute("userid") != null) {
                 int l = Integer.parseInt(session.getAttribute("userid").toString());
         %>
-            <%@include file="pages/dashboard.jsp" %>
+        <%@include file="pages/dashboard.jsp" %>
         <%        } else {
         %>
         <div id="winlogin" class="easyui-window"

@@ -34,8 +34,9 @@
 <script>
     $("#modulesTreeGrid").treegrid();
     $("#modulesTreeGrid").treegrid({
-        onDblClickRow:function (row){
-            alert(row.id);
+        onDblClickRow: function (row) {
+            //alert(row.id);
+            Setting.prototype.loadEditModules(row.id);
         }
     });
 </script>

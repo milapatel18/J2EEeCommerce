@@ -78,7 +78,7 @@ public class ModulesFacadesImpl implements ModulesFacades {
                 if (modules.getModules() == null) {
                     TreeComboBox treeComboBox = new TreeComboBox();
                     treeComboBox.setId(modules.getId().intValue());
-                    treeComboBox.setText(modules.getModuleTitle());
+                    treeComboBox.setText(modules.getModuleName());
                     treeComboBox.setChildren(getAllChildrenModulesData(moduleses, modules));
                     treeComboBoxs.add(treeComboBox);
                     System.out.println("Added One");
@@ -97,7 +97,7 @@ public class ModulesFacadesImpl implements ModulesFacades {
                 if (modules.getModules() != null && modules.getModules().getId() == module.getId()) {
                     TreeComboBox treeComboBox = new TreeComboBox();
                     treeComboBox.setId(modules.getId().intValue());
-                    treeComboBox.setText(modules.getModuleTitle());
+                    treeComboBox.setText(modules.getModuleName());
                     treeComboBox.setChildren(getAllChildrenModulesData(moduleses, modules));
                     treeComboBoxs.add(treeComboBox);
                     System.out.println("Added 3 One");

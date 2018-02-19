@@ -9,4 +9,6 @@ public interface ModulesDAO extends GenericDao<Modules, Long> {
     public Modules getSubModules(Modules modules);
 
     public void adds(Modules modules);
+
+    public void updateHasChildren(Long oldParentId, Long newParentId);
 }

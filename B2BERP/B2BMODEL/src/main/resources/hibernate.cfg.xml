@@ -47,8 +47,8 @@ Contributor(s):
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/ERPCOMMERCE?zeroDateTimeBehavior=convertToNull</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password"></property>
-        <property name="hibernate.show_sql">true</property>
-        <property name="hibernate.format_sql">true</property>
+        <property name="hibernate.show_sql">false</property>
+        <property name="hibernate.format_sql">false</property>
         <mapping class="com.b2berp.b2bmodel.core.Addresses"></mapping>
         <mapping class="com.b2berp.b2bmodel.core.AttributesData"></mapping>
         <mapping class="com.b2berp.b2bmodel.core.AttributeTypes"></mapping>

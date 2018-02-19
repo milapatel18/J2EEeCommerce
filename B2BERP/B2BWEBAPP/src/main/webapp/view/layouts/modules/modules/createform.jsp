@@ -9,8 +9,7 @@
 
 <div style="margin-bottom:20px;font-size:14px;border-bottom:1px solid #ccc">Module Create Form</div>
 <form id="newModuleCreationform" action="domain/modules/create" method="post" novalidate style="margin:0;padding:20px 20px">
-    <input type="hidden" name="${_csrf.parameterName}"
-           value="${_csrf.token}" />
+    
     <table id='newModuleCreationformTable' style="width: 100%">
         <tr>
             <td style="width: 15%">Module Name : </td>
